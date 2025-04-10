@@ -39,7 +39,7 @@ public class StudentServiceImpl  implements StudentService {
 
         return students.stream()
                 .map(this::toDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class StudentServiceImpl  implements StudentService {
         List<Student> students = studentRepository.findBySurnameAndJoinedCourseAfterOrderByIdDesc(surname, date);
         return students.stream()
                 .map(this::toDto)
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
