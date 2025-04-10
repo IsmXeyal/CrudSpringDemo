@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <property name="LOG_FOLDER" value="logs" />
+    <property name="STUDENT_LOG_FILE" value="${LOG_FOLDER}/studentlogs.log" />
+    <property name="COURSE_LOG_FILE" value="${LOG_FOLDER}/courselogs.log" />
+
+    <!-- Console (optional) -->
+    <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Student Logs Appender -->
+    <appender name="StudentLogs" class="ch.qos.logback.core.FileAppender">
+        <file>${STUDENT_LOG_FILE}</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Course Logs Appender -->
+    <appender name="CourseLogs" class="ch.qos.logback.core.FileAppender">
+        <file>${COURSE_LOG_FILE}</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Logger for StudentController & StudentServiceImpl -->
+    <logger name="com.example.CrudSpringDemo.controller.StudentController" level="INFO" additivity="false">
+        <appender-ref ref="StudentLogs"/>
+    </logger>
+    <logger name="com.example.CrudSpringDemo.service.impl.StudentServiceImpl" level="INFO" additivity="false">
+        <appender-ref ref="StudentLogs"/>
+    </logger>
+
+    <!-- Logger for CourseController & CourseServiceImpl -->
+    <logger name="com.example.CrudSpringDemo.controller.CourseController" level="INFO" additivity="false">
+        <appender-ref ref="CourseLogs"/>
+    </logger>
+    <logger name="com.example.CrudSpringDemo.service.impl.CourseServiceImpl" level="INFO" additivity="false">
+        <appender-ref ref="CourseLogs"/>
+    </logger>
+
+    <!-- Root logger -->
+    <root level="INFO">
+        <appender-ref ref="Console"/>
+    </root>
+
+</configuration>

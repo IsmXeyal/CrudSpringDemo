@@ -1,0 +1,6 @@
+2025-04-11 00:26:55 [http-nio-8080-exec-2] INFO  c.e.C.s.impl.StudentServiceImpl - Attempting to add new student: Nermin Sultanli
+2025-04-11 00:26:56 [http-nio-8080-exec-2] INFO  c.e.C.s.impl.StudentServiceImpl - Student added with ID: 4
+2025-04-11 00:44:01 [http-nio-8080-exec-3] INFO  c.e.C.s.impl.StudentServiceImpl - Fetching all students
+2025-04-11 00:44:01 [http-nio-8080-exec-3] INFO  c.e.C.s.impl.StudentServiceImpl - Found 3 students
+2025-04-11 00:44:56 [http-nio-8080-exec-6] INFO  c.e.C.s.impl.StudentServiceImpl - Updating student with ID: 5
+2025-04-11 00:44:56 [http-nio-8080-exec-6] ERROR c.e.C.s.impl.StudentServiceImpl - Student with ID 5 not found
