@@ -25,7 +25,8 @@ public class StudentServiceImpl  implements StudentService {
         Student student = new Student();
         student.setName(dto.getName());
         student.setSurname(dto.getSurname());
-        student.setJoinedCourse(dto.getJoinedCourse());
+        student.setEmail(dto.getEmail());
+        student.setJoinedCourse(LocalDate.now());
         student.setCourse(course);
 
         Student savedStudent = studentRepository.save(student);
@@ -51,15 +52,23 @@ public class StudentServiceImpl  implements StudentService {
 
     @Override
     public void updateStudent(Long id, StudentCreateDto updatedStudent) {
-        Course course = courseRepository.findById(updatedStudent.getCourseId())
+        Student existingStudent = studentRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Student not found"));
+
+        Course newCourse = courseRepository.findById(updatedStudent.getCourseId())
                 .orElseThrow(() -> new RuntimeException("Course not found"));
+
+        LocalDate joinedCourseDate = existingStudent.getCourse().getId().equals(newCourse.getId())
+                ? updatedStudent.getJoinedCourse()
+                : LocalDate.now();
 
         studentRepository.updateStudent(
                 id,
                 updatedStudent.getName(),
                 updatedStudent.getSurname(),
-                updatedStudent.getJoinedCourse(),
-                course.getId()
+                updatedStudent.getEmail(),
+                joinedCourseDate,
+                newCourse.getId()
         );
     }
 
@@ -73,6 +82,7 @@ public class StudentServiceImpl  implements StudentService {
                 student.getId(),
                 student.getName(),
                 student.getSurname(),
+                student.getEmail(),
                 student.getJoinedCourse(),
                 student.getCourse().getName()
         );

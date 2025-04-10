@@ -18,9 +18,9 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Modifying
     @Transactional
-    @Query("UPDATE Student s SET s.name = :name, s.surname = :surname, s.joinedCourse = :joinedCourse, s.course.Id = :courseId WHERE s.Id = :id")
+    @Query("UPDATE Student s SET s.name = :name, s.surname = :surname, s.email = :email, s.joinedCourse = :joinedCourse, s.course.Id = :courseId WHERE s.Id = :id")
     void updateStudent(@Param("id") Long id, @Param("name") String name, @Param("surname") String surname,
-                       @Param("joinedCourse") LocalDate joinedCourse, @Param("courseId") Long courseId);
+                       String email, @Param("joinedCourse") LocalDate joinedCourse, @Param("courseId") Long courseId);
 
     @Modifying
     @Transactional

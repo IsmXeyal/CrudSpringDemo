@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public class StudentCreateDto {
     private String name;
     private String surname;
+    private String email;
     private LocalDate joinedCourse;
     private Long courseId;
 }

@@ -12,6 +12,7 @@ public class StudentResponseDto {
     private Long id;
     private String name;
     private String surname;
+    private String email;
     private LocalDate joinedCourse;
     private String courseName;
 }
