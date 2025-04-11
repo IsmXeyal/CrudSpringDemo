@@ -1,0 +1,4 @@
+2025-04-11 10:19:24 [http-nio-8080-exec-4] INFO  c.e.C.s.impl.StudentServiceImpl - Fetching all students
+2025-04-11 10:19:24 [http-nio-8080-exec-4] INFO  c.e.C.s.impl.StudentServiceImpl - Found 3 students
+2025-04-11 10:20:04 [http-nio-8080-exec-7] INFO  c.e.C.s.impl.StudentServiceImpl - Searching students with surname 'Ismayilov' who joined after 2022-02-02
+2025-04-11 10:20:04 [http-nio-8080-exec-7] INFO  c.e.C.s.impl.StudentServiceImpl - Total number of students found: 3

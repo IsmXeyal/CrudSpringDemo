@@ -1,0 +1,2 @@
+2025-04-11 10:17:00 [http-nio-8080-exec-2] INFO  c.e.C.service.impl.CourseServiceImpl - Fetching all courses
+2025-04-11 10:17:00 [http-nio-8080-exec-2] INFO  c.e.C.service.impl.CourseServiceImpl - Found 4 courses

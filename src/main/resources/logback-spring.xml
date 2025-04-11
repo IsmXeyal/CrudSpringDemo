@@ -2,31 +2,41 @@
 <configuration>
 
     <property name="LOG_FOLDER" value="logs" />
-    <property name="STUDENT_LOG_FILE" value="${LOG_FOLDER}/studentlogs.log" />
-    <property name="COURSE_LOG_FILE" value="${LOG_FOLDER}/courselogs.log" />
 
-    <!-- Console (optional) -->
+    <!-- Console Appender -->
     <appender name="Console" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} - %msg%n</pattern>
         </encoder>
     </appender>
 
-    <!-- Student Logs Appender -->
-    <appender name="StudentLogs" class="ch.qos.logback.core.FileAppender">
-        <file>${STUDENT_LOG_FILE}</file>
-        <append>true</append>
+    <!-- Student Logs Appender (No base file, uses rotation pattern directly) -->
+    <appender name="StudentLogs" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FOLDER}/studentlogs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
         </encoder>
     </appender>
 
-    <!-- Course Logs Appender -->
-    <appender name="CourseLogs" class="ch.qos.logback.core.FileAppender">
-        <file>${COURSE_LOG_FILE}</file>
-        <append>true</append>
+    <!-- Course Logs Appender (Same rotation setup) -->
+    <appender name="CourseLogs" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_FOLDER}/courselogs.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
         <encoder>
             <pattern>%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n</pattern>
+            <charset>UTF-8</charset>
         </encoder>
     </appender>
 
